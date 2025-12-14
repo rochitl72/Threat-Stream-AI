@@ -78,4 +78,8 @@ dashboard/out/
 # PID files
 .dashboard_pids
 
+# Binaries and executables
+bin/
+*.bin
+confluent
 
