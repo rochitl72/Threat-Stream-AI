@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: threatstream-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn src.dashboard.api.server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: CONFLUENT_BOOTSTRAP_SERVERS
+        sync: false
+      - key: CONFLUENT_API_KEY
+        sync: false
+      - key: CONFLUENT_API_SECRET
+        sync: false
+      - key: CONFLUENT_CLUSTER_ID
+        sync: false
+      - key: GOOGLE_CLOUD_PROJECT
+        sync: false
+      - key: GCP_REGION
+        value: us-central1
+      - key: VERTEX_AI_LOCATION
+        value: us-central1
+      - key: GEMINI_MODEL
+        value: gemini-pro
+      - key: PORT
+        value: 10000
+

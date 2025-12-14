@@ -230,7 +230,7 @@ ThreatStream AI addresses these challenges through:
 
 | Service | Role |
 |---------|------|
-| **Confluent Cloud** | Kafka cluster and Schema Registry |
+| **Confluent Cloud** | Kafka cluster (Schema Registry not used) |
 | **Google Cloud Platform** | Vertex AI, Application Default Credentials |
 | **GitHub** | Version control and repository |
 
@@ -306,10 +306,11 @@ CONFLUENT_API_KEY=your_api_key
 CONFLUENT_API_SECRET=your_api_secret
 CONFLUENT_CLUSTER_ID=your_cluster_id
 
-# Schema Registry (Optional)
-CONFLUENT_SCHEMA_REGISTRY_URL=https://xxxxx.us-central1.gcp.confluent.cloud
-CONFLUENT_SCHEMA_REGISTRY_API_KEY=your_sr_api_key
-CONFLUENT_SCHEMA_REGISTRY_API_SECRET=your_sr_api_secret
+# Schema Registry (Optional - Not Required)
+# Schema Registry is not used in this project. These fields are kept for future use.
+# CONFLUENT_SCHEMA_REGISTRY_URL=https://xxxxx.us-central1.gcp.confluent.cloud
+# CONFLUENT_SCHEMA_REGISTRY_API_KEY=your_sr_api_key
+# CONFLUENT_SCHEMA_REGISTRY_API_SECRET=your_sr_api_secret
 
 # Google Cloud Configuration
 GOOGLE_CLOUD_PROJECT=your-project-id

@@ -61,13 +61,6 @@ def test_configuration():
         assert kafka_config.get("sasl.username"), "API key not configured"
         log_test("Kafka Config", "PASS", f"Bootstrap: {kafka_config.get('bootstrap.servers')}")
         
-        # Test Schema Registry config
-        sr_config = Config.get_schema_registry_config()
-        if sr_config:
-            log_test("Schema Registry Config", "PASS", f"URL: {sr_config.get('url')}")
-        else:
-            log_test("Schema Registry Config", "WARN", "Schema Registry not configured")
-        
         # Test GCP config
         assert Config.GOOGLE_CLOUD_PROJECT, "GCP project not configured"
         log_test("GCP Config", "PASS", f"Project: {Config.GOOGLE_CLOUD_PROJECT}")
@@ -119,46 +112,6 @@ def test_kafka_connection():
         return True
     except Exception as e:
         log_test("Kafka Connection", "FAIL", str(e))
-        return False
-
-
-def test_schema_registry():
-    """Test 3: Schema Registry"""
-    logger.info("\n" + "="*60)
-    logger.info("TEST 3: Schema Registry Connection")
-    logger.info("="*60)
-    
-    try:
-        import requests
-        from requests.auth import HTTPBasicAuth
-        
-        sr_config = Config.get_schema_registry_config()
-        if not sr_config:
-            log_test("Schema Registry", "SKIP", "Not configured")
-            return True
-        
-        url = sr_config["url"]
-        auth_info = sr_config["basic.auth.user.info"].split(":")
-        api_key, api_secret = auth_info[0], auth_info[1]
-        
-        # Test connection
-        response = requests.get(
-            f"{url}/subjects",
-            auth=HTTPBasicAuth(api_key, api_secret),
-            timeout=10
-        )
-        
-        if response.status_code == 200:
-            subjects = response.json()
-            log_test("Schema Registry Connection", "PASS", f"Status: {response.status_code}")
-            log_test("Schema Registry Subjects", "INFO", f"Found {len(subjects)} subjects", subjects)
-        else:
-            log_test("Schema Registry Connection", "FAIL", f"Status: {response.status_code}")
-            return False
-        
-        return True
-    except Exception as e:
-        log_test("Schema Registry", "FAIL", str(e))
         return False
 
 
@@ -425,7 +378,6 @@ def main():
     tests = [
         ("Configuration", test_configuration),
         ("Kafka Connection", test_kafka_connection),
-        ("Schema Registry", test_schema_registry),
         ("Vertex AI", test_vertex_ai),
         ("Kafka Producers", test_producers),
         ("Data Models", test_data_models),
