@@ -1,0 +1,48 @@
+# Confluent Kafka
+confluent-kafka>=2.3.0
+# Schema Registry support (install with: pip install 'confluent-kafka[schema-registry]')
+# Or use: pip install protobuf avro-python3
+
+# Google Cloud & Vertex AI
+google-cloud-aiplatform>=1.38.0
+google-generativeai>=0.3.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Data processing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# JSON handling
+pydantic>=2.0.0
+
+# HTTP requests
+requests>=2.31.0
+
+# Security & Threat Intelligence
+# Note: mitreattack package doesn't exist - we use custom MITRE models
+python-dateutil>=2.8.2
+
+# Logging
+loguru>=0.7.0
+
+# Async processing
+asyncio>=3.4.3
+
+# Data validation
+jsonschema>=4.19.0
+
+# Time series analysis (for anomaly detection)
+scikit-learn>=1.3.0
+
+# Data generation
+faker>=19.0.0
+
+# Dashboard backend
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+websockets>=12.0
+python-socketio>=5.10.0
+python-multipart>=0.0.6
+psutil>=5.9.0
