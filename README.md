@@ -815,10 +815,5 @@ This project showcases how modern cloud technologies can be combined to create p
 
 ---
 
-## 📞 Contact
 
-For questions or issues, please open an issue on GitHub.
 
----
-
-**Built with ❤️ for the Google Cloud & Confluent Hackathon**
